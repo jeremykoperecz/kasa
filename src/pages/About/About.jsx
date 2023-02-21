@@ -12,8 +12,8 @@ export default function About() {
 					aboutTitle={rule.aboutTitle}
 					aboutText={rule.aboutText}
 					aboutStyle="about-style"
-				/>
-			))}
+				/>	
+			))}	
 		</>
 	);
 }

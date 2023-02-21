@@ -10,19 +10,22 @@ export default function Home() {
 	useEffect(() => {
 		axios.get("/logements.json").then((res) => setData(res.data)); //requète AXIOS ici également pour prochaine utilisation API
 	}, []);
+		
+	
 
-	return (
-		<>
-			<Banner />
-			<div className="cards-container">
-				{data.map((appart, id) => (
-					<div className="card_logement" key={id}>
-						<Link className="link_card_logement" to={`/logement/${appart.id}`}>
-							<Card cover={appart.cover} title={appart.title} />
-						</Link>
-					</div>
-				))}
-			</div>
-		</>
-	);
-}
+		return (
+			<>
+				<Banner />
+				<div className="cards-container">
+					{data.map((appart, id) => (
+						<div className="card_logement" key={id}>
+							<Link className="link_card_logement" to={`/logement/${appart.id}`}>
+								<Card cover={appart.cover} title={appart.title} />
+							</Link>
+						</div>
+					))}
+				</div>
+			</>
+		);
+	}
+

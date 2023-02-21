@@ -19,7 +19,8 @@
 	& img {
 		@include WH-full;
 		border-radius: 50%;
-		object-fit: cover;
+		-o-object-fit: cover;
+		   object-fit: cover;
 	}
 }
 
