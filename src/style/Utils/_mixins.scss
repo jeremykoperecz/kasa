@@ -79,6 +79,11 @@
     z-index: 10;
     cursor: pointer;
 
+    &:hover {
+        transition-duration: 0.3s;
+        transform: scale(1.1) ;
+    }
+
     @media screen and (min-width: $breakpoint-desktop) {
         width: 47px;
         height: 79px;
@@ -95,6 +100,11 @@
     height: 20px;
     z-index: 10;
     cursor: pointer;
+
+    &:hover {
+            transition-duration: 0.3s;
+            transform: scale(1.1) ;
+        }
 
     @media screen and (min-width: $breakpoint-desktop) {
         width: 47px;

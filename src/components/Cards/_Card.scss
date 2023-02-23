@@ -11,8 +11,7 @@
         width: 340px;
         height: 340px;
 
-        &:hover,
-        &:focus {
+        &:hover{
             @include boxShadow;
             transition-duration: 0.3s;
             transform: scale(1.05) ;
