@@ -13,10 +13,9 @@ export default function Home() {
 	useEffect(() => {
 		setLoader(true);
 		axios.get("/logements.json").then((res)=> setAppart(res.data)); //requète AXIOS pour prochaine utilisation API
-		setLoader(true) 
+		setLoader(false) 
 },[]);         
 			
-	
 	return loader ? (     // le loader et present jusqu'a ce que la requete axios importe les images de l'api
 		<Loader />
 	) : (
