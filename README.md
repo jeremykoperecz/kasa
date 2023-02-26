@@ -1,6 +1,7 @@
 ## Contexte
 
 Projet n°7 de la formation Developpeur Web OPENCLASSROOMS
+
 ## technologie utilisées
 
 ● Create React App
