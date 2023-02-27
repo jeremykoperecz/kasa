@@ -2,36 +2,18 @@ import { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import Card from "../../components/Cards/Card";
 import { Link } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
-
+import axios from "axios";
 
 
 export default function Home() {
 	    
 const [appart, setAppart] = useState([]);
-const [loader, setLoader] = useState(false);
 
-	useEffect(() => {          
-		async function fetchHome() {             //utilisation de fectch pour recuperer les apparts
-			setLoader(true)
-			try {
-				const response =  await fetch("logements.json")
-				const  appart  = await response.json()
-				setAppart( appart )
-			} catch (err) {
-				console.log(err)
-			}
-			finally {
-			setLoader(false)
-			}
-		}
-		fetchHome()
-	}, [])
-	
+useEffect(() => {
+	axios.get("/logements.json").then((res) => setAppart(res.data)); //requète AXIOS pour prochaine utilisation API
+}, []);
 			
-	return loader ? (     // le loader et present jusqu'a ce que la requete fetch importe les images de l'api
-		<Loader />
-	) : (
+	return  (    
 		<>
 			<Banner />
 			<div className="cards-container">

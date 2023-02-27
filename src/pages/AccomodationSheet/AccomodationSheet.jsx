@@ -7,22 +7,23 @@ import Rate from "../../components/Rate/Rate";
 import Tag from "../../components/Tag/Tag";
 import axios from "axios";
 
-export default function AccSheet() {
+export default function FicheLogement() {
 	const params = useParams();
 	const navigate = useNavigate();
 
 	const [pickedAppart, setPickedAppart] = useState();
 	useEffect(() => {
 		const getData = async () => {
-			const housing = await axios.get("/logements.json"); 
-			const picked = housing.data.find(({ id }) => id === params.id);
-			housing.data.map(() => setPickedAppart(picked));
-			if (!picked) {
+			const res = await axios.get("/logements.json"); //j'ai préféré utiliser une requète AXIOS pour être prêt à la future mise en place de l'API
+			const picked = res.data.find(({ id }) => id === params.id);
+			res.data.map(() => setPickedAppart(picked));
+			if (picked === undefined) {
 				navigate("/404", { state: { message: "Can't get data" } }); //renvoi vers la page 404 en cas d'URL de logement invalide
 			}
 		};
 		getData();
-	}, [params, navigate]); 
+		
+	}, [navigate, params]); // array vide du useEffect pour ne lancer qu'une seule fois
 	const slidePics = pickedAppart && pickedAppart.pictures;
 	const tags = pickedAppart && pickedAppart.tags;
 	const equipments = pickedAppart && pickedAppart.equipments;
