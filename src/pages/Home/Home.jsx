@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import Card from "../../components/Cards/Card";
 import { Link } from "react-router-dom";
-//import axios from "axios";
 import Loader from "../../components/Loader/Loader";
 
 
@@ -12,11 +11,11 @@ export default function Home() {
 const [appart, setAppart] = useState([]);
 const [loader, setLoader] = useState(false);
 
-	useEffect(() => {
-		async function fetchHome() {
+	useEffect(() => {          
+		async function fetchHome() {             //utilisation de fectch pour recuperer les apparts
 			setLoader(true)
 			try {
-				const response = await fetch("logements.json")
+				const response =  await fetch("logements.json")
 				const  appart  = await response.json()
 				setAppart( appart )
 			} catch (err) {

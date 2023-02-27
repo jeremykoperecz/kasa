@@ -14,7 +14,7 @@ export default function AccSheet() {
 	const [pickedAppart, setPickedAppart] = useState();
 	useEffect(() => {
 		const getData = async () => {
-			const housing = await axios.get("/logements.json"); //j'ai utilisé une requète AXIOS pour être prêt à la future mise en place de l'API
+			const housing = await axios.get("/logements.json"); 
 			const picked = housing.data.find(({ id }) => id === params.id);
 			housing.data.map(() => setPickedAppart(picked));
 			if (!picked) {
