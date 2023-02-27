@@ -17,13 +17,12 @@ export default function FicheLogement() {
 			const housing = await axios.get("/logements.json"); //j'ai utilisé une requète AXIOS pour être prêt à la future mise en place de l'API
 			const picked = housing.data.find(({ id }) => id === params.id);
 			housing.data.map(() => setPickedAppart(picked));
-			if (picked === undefined) {
+			if (!picked) {
 				navigate("/404", { state: { message: "Can't get data" } }); //renvoi vers la page 404 en cas d'URL de logement invalide
 			}
 		};
 		getData();
-		// eslint-disable-next-line
-	}, []); // array vide du useEffect pour ne lancer qu'une seule fois
+	}, [params, navigate]); 
 	const slidePics = pickedAppart && pickedAppart.pictures;
 	const tags = pickedAppart && pickedAppart.tags;
 	const equipments = pickedAppart && pickedAppart.equipments;
