@@ -7,7 +7,7 @@ import Rate from "../../components/Rate/Rate";
 import Tag from "../../components/Tag/Tag";
 import axios from "axios";
 
-export default function FicheLogement() {
+export default function AccSheet() {
 	const params = useParams();
 	const navigate = useNavigate();
 
