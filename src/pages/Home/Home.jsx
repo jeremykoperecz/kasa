@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import Card from "../../components/Cards/Card";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
 
 
 export default function Home() {
@@ -10,8 +10,18 @@ export default function Home() {
 const [appart, setAppart] = useState([]);
 
 useEffect(() => {
-	axios.get("/logements.json").then((res) => setAppart(res.data)); //requète AXIOS pour prochaine utilisation API
-}, []);
+	async function fetchHome() {
+		try {
+			const response = await fetch("/logements.json")
+			console.log(response)
+			const appart = await response.json()
+			setAppart(appart)
+		} catch (err) {
+			console.log(err)
+		}
+	}
+		fetchHome()
+}, [])
 			
 	return  (    
 		<>
